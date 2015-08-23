@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Aimee VonBokel Mapping Pauline and Edward</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <link rel="shortcut icon" href="http://cartodb.com/assets/favicon.ico" />
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+    <style>
+     /* CSS Goes Here*/
+     body {
+      margin:0;
+     }
+     #map {
+      background:gray;
+      position:absolute;
+      height:100%;
+      width:100%;
+     }
+      #info {
+      position: absolute;
+      top: 10px;
+      left: 50px;
+      background: #cc6600;
+      width:300px;
+      border-radius: 10px;
+      display: block;
+      padding: 10px;
+      color: white;
+      font-family:sans-serif;
+     }
+    </style>
+  </head>
+  <body>  
+    <div id='map'>
+    </div>
+    <div id='info'>
+      <p class = 'message'>Aimee's Questions</p>
+      <ol>1. How do I show two trajectories? Two separate layers?</ol>
+      <ol>2. How do I animate the layers to show long-term residency? 
+      Edward lives at 403 Grand for ~25 years. 
+      Pauline is only at Orchard Street for around 8 years) </ol>
+      <ol>3. Can I animate both trajectories at once? To compare them? When I open this map in CartoDB, I don't see the torque option under "wizards" even though I have 2 date columns.</ol>
+    </div>
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js">
+      </script>
+<script>
+  var map = new L.Map('map', {
+          center: [40.656160, -73.956528],
+          zoom: 12
+        });
+
+      var basemap = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',{
+          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
+        }).addTo(map);
+
+      var myLayer = cartodb.createLayer(map, 'https://nyu.cartodb.com/u/aimeeveebee/api/v2/viz/adc758da-4927-11e5-b25e-0e018d66dc29/viz.json').addTo(map);
+    </script>
+  </body>
+</html>
